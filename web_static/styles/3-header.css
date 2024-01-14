@@ -1,0 +1,6 @@
+header {
+    background-color: #fff;
+    height: 70px;
+    border-bottom: 1px solid #CCCCCC;
+    background: url("/AirBnB_clone/web_static/images/logo.png") 20px center no-repeat;
+}
