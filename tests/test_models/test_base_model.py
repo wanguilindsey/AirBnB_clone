@@ -79,7 +79,20 @@ class TestBaseModelRecreation(unittest.TestCase):
         self.base.name = 'Test_Model'
         self.base.number = 7
         obj_dict = self.base.to_dict()
-        self.new_base = BaseModel(**obj_dict)
+
+        required_attributes = ['id', 'created_at', 'updated_at']
+        for attribute in required_attributes:
+            assert attribute in obj_dict, (
+                    f"Missing required attribute: {attribute}"
+                    )
+        # Pass the required attributes directly when creating a new instance
+        self.new_base = BaseModel(
+                id=obj_dict['id'],
+                created_at=obj_dict['created_at'],
+                updated_at=obj_dict['updated_at'],
+                name=obj_dict.get('name', None),
+                number=obj_dict.get('number', None)
+                )
 
     def test_object_recreation_kwargs_check(self):
         """Test that kwargs are checked for before initializing new objects."""

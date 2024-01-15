@@ -39,8 +39,9 @@ class HBNBCommand(cmd.Cmd):
         classes: Set of available classes.
     """
     prompt = "(hbnb) "
-    classes =
-    {"BaseModel", "User", "State", "City", "Place", "Amenity", "Review"}
+    classes = {
+            "BaseModel", "User", "State", "City", "Place", "Amenity", "Review"
+            }
 
     def emptyline(self):
         """Do nothing upon receiving an empty line."""
@@ -177,8 +178,8 @@ class HBNBCommand(cmd.Cmd):
         elif type(eval(arg_list[2])) == dict:
             obj = obj_dict["{}.{}".format(arg_list[0], arg_list[1])]
             for i, j in eval(arg_list[2]).items():
-                if i in obj.__class__.__dict__ and
-                type(obj.__class__.__dict__[i]) in {str, int, float}:
+                if i in obj.__class__.__dict__ and \
+                        type(obj.__class__.__dict__[i]) in {str, int, float}:
                     val_type = type(obj.__class__.__dict__[i])
                     obj.__dict__[i] = val_type(j)
                 else:

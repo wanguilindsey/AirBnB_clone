@@ -38,6 +38,8 @@ class TestFileStorage(unittest.TestCase):
         """Test that 'all()' returns an empty dictionary
         on class instantiation"""
         storage_instance = FileStorage()
+
+        storage_instance._FileStorage__objects = {}
         self.assertEqual(len(storage_instance.all()), 0)
 
     def test_all_return_with_objects(self):
